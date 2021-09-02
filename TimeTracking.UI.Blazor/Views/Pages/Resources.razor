@@ -1,0 +1,20 @@
+﻿@page "/resources"
+@using TimeTracking.UI.Blazor.Views.Components
+@using TimeTracking.Core.Models
+
+<PageLayoutDefault Title="Resources">
+    <Table TItem="Resource" DataSource="@ResourceRetrieved">
+        <Column @bind-Field="@context.Name" Sortable />
+        <Column @bind-Field="@context.EmailAddress" />
+        <Column Title="Enabled" Field="@context.Enabled">
+            <Switch @bind-Value="@context.Enabled" Disabled=true></Switch>
+        </Column>
+        <ActionColumn>
+            <Space>
+                <SpaceItem><Button Danger OnClick="()=>Edit()">Edit</Button></SpaceItem>
+            </Space>
+        </ActionColumn>
+    </Table>
+</PageLayoutDefault>
+
+
