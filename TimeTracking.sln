@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Api", "TimeTracking.API\TimeTracking.Api.csproj", "{EF545BE3-28E6-4840-83FC-04E3F9B89F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.UI.Api", "TimeTracking.UI.Api\TimeTracking.UI.Api.csproj", "{EF545BE3-28E6-4840-83FC-04E3F9B89F74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Core", "TimeTracking.Core\TimeTracking.Core.csproj", "{74BF9626-E5AA-430D-8395-350D2160CEB5}"
 EndProject

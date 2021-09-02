@@ -2,7 +2,7 @@
 using TimeTracking.Core.Models;
 using TimeTracking.Core.Services.Resources;
 
-namespace TimeTracking.Api.Controllers;
+namespace TimeTracking.UI.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

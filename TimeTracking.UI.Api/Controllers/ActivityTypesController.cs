@@ -2,7 +2,7 @@
 using TimeTracking.Core.Models;
 using TimeTracking.Core.Services.ActivityTypes;
 
-namespace TimeTracking.Api.Controllers;
+namespace TimeTracking.UI.Api.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class ActivityTypesController : ControllerBase
