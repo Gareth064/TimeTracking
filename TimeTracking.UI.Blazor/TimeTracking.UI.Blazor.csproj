@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.9.3" />
+    <PackageReference Include="PrettyBlazor" Version="1.2.0" />
     <PackageReference Include="RESTFulSense" Version="1.9.0" />
   </ItemGroup>
 

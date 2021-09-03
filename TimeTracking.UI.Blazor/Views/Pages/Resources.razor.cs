@@ -14,20 +14,22 @@ using Microsoft.JSInterop;
 using TimeTracking.UI.Blazor;
 using TimeTracking.UI.Blazor.Shared;
 using TimeTracking.Core.Models;
+using TimeTracking.UI.Blazor.Services.Resources;
 
 namespace TimeTracking.UI.Blazor.Views.Pages
 {
     public partial class Resources
     {
+        [Inject]
+        public IResourceService resourceService { get; set;  }
+        public bool loading { get; set; } = false;
         public List<Resource> ResourceRetrieved { get; set; } = new List<Resource>();
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            ResourceRetrieved.Add(new Resource { Id = Guid.NewGuid(), Name = "Gareth Doherty", EmailAddress = "gd@gd.com", Enabled = true });
-            ResourceRetrieved.Add(new Resource { Id = Guid.NewGuid(), Name = "George Patton", EmailAddress = "gp@gp.com", Enabled = true });
-            ResourceRetrieved.Add(new Resource { Id = Guid.NewGuid(), Name = "John Doe", EmailAddress = "jd@jd.com", Enabled = true });
-            ResourceRetrieved.Add(new Resource { Id = Guid.NewGuid(), Name = "Sherley Donahugh", EmailAddress = "sd@sd.com", Enabled = true });
-            return base.OnInitializedAsync();  
+            loading = true;
+            ResourceRetrieved = await resourceService.RetrieveResourcesAsync();
+            loading = false;
         }
         public void Edit()
         {

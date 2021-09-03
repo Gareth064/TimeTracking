@@ -1,6 +1,8 @@
 ﻿using RESTFulSense.Clients;
 using System;
+using TimeTracking.UI.Blazor.Brokers.Api;
 using TimeTracking.UI.Blazor.Models.Configurations;
+using TimeTracking.UI.Blazor.Services.Resources;
 
 namespace TimeTracking.UI.Blazor;
 public class Startup
@@ -17,6 +19,8 @@ public class Startup
         services.AddAntDesign();
         AddHttpClient(services);
         AddRootDirectory(services);
+        services.AddScoped<IApiBroker, ApiBroker>();
+        services.AddScoped<IResourceService, ResourceService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

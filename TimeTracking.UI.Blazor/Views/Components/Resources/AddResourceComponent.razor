@@ -1,0 +1,18 @@
+﻿<Form Loading="submitting" Layout=FormLayout.Horizontal Model=resource>
+    <FormItem Label="Name">
+        <Input @bind-Value="@context.Name" />
+    </FormItem>
+    <FormItem Label="Email Address">
+        <Input @bind-Value="@context.EmailAddress" />
+    </FormItem>    
+    <FormItem Label="Enabled">
+        <Switch @bind-Value="@context.Enabled" Disabled=true />
+    </FormItem>
+    <FormItem>
+            <Button Type="@ButtonType.Primary" HtmlType="submit" OnClick=SubmitAddResourceForm>
+                Submit
+            </Button>
+        </FormItem>
+</Form>
+
+
