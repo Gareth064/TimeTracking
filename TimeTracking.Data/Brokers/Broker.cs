@@ -17,6 +17,7 @@ namespace TimeTracking.Data.Brokers
             base.OnModelCreating(modelBuilder);
             AddActivityTypeConfiguration(modelBuilder);
             AddResourceConfiguration(modelBuilder);
+            AddTimeSheetHeaderConfiguration(modelBuilder);
 
         }
 

@@ -1,4 +1,13 @@
-﻿<Form Loading="submitting" Layout=FormLayout.Horizontal Model=resource>
+﻿@using TimeTracking.Core.Models
+@inherits FeedbackComponent<Resource>
+
+<Form 
+            Loading="submitting" 
+            Layout=FormLayout.Horizontal
+            Model=resource
+            OnFinish="OnFinished"
+            OnFinishFailed="OnFinishedFailed"
+            >
     <FormItem Label="Name">
         <Input @bind-Value="@context.Name" />
     </FormItem>
@@ -6,7 +15,7 @@
         <Input @bind-Value="@context.EmailAddress" />
     </FormItem>    
     <FormItem Label="Enabled">
-        <Switch @bind-Value="@context.Enabled" Disabled=true />
+        <Switch @bind-Value="@context.Enabled" />
     </FormItem>
     <FormItem>
             <Button Type="@ButtonType.Primary" HtmlType="submit" OnClick=SubmitAddResourceForm>

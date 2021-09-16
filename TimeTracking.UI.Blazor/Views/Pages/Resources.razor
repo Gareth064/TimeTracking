@@ -1,32 +1,13 @@
 ﻿@page "/resources"
 @using TimeTracking.UI.Blazor.Views.Components
-@using TimeTracking.Core.Models
+@using TimeTracking.UI.Blazor.Views.Components.Resources
 
-<Condition Evaluation="@loading">
-    <Match>
-        <Spin Size="large" />
-    </Match>
-    <NotMatch>
-        <PageLayoutDefault Title="Resources">
-            <Table TItem="Resource" DataSource="@ResourceRetrieved">
-                <Column @bind-Field="@context.Name" Sortable />
-                <Column @bind-Field="@context.EmailAddress" />
-                <Column Title="Enabled" Field="@context.Enabled">
-                    <Switch @bind-Value="@context.Enabled" Disabled=true></Switch>
-                </Column>
-                <ActionColumn>
-                    <Space>
-                        <SpaceItem>
-                            <Button OnClick="()=>Edit()">Edit</Button>
-                        </SpaceItem>
-                    </Space>
-                </ActionColumn>
-            </Table>
-        </PageLayoutDefault>
-    </NotMatch>
-</Condition>
-
-<TimeTracking.UI.Blazor.Views.Components.Resources.AddResourceComponent/>
-
+<PageLayoutDefault Title="Resources">
+    <Button Type="primary" OnClick="()=>OpenAddResourceModalAsync()">Add Resource</Button>
+    <br />
+    <ResourcesTableComponent @ref="ResourcesTable" ResourceToEdit=SelectedResource></ResourcesTableComponent>
+    <Title Level=3>Edit Resource Form Component</Title>
+    <EditResourceFormComponent ResourceToEdit="SelectedResource" />
+</PageLayoutDefault>
 
 

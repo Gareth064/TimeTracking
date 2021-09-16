@@ -1,9 +1,26 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <main>
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+<Layout Class="layout">
+    <Header>
+        <div class="logo" />
+        <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new[]{"1"}) Accordion=true>
+            <MenuItem Key="1" RouterLink="/">Home</MenuItem>
+            <SubMenu Title="Admin" Key="2">
+                <MenuItem Title="Resources" RouterLink="/resources" />
+            </SubMenu>
+        </Menu>
+    </Header>
+    <Content Style="padding: 0 50px;">
+        <div class="site-layout-content">@Body</div>
+    </Content>
+    <Footer Style="text-align: center; ">Time Tracking ©2021 Created by Doherty Software Solutions</Footer>
+</Layout>
+
+<style>
+    .site-layout-content {
+        background: #fff;
+        padding: 24px;
+        min-height: 280px;
+        margin-top: 20px
+    }
+</style>

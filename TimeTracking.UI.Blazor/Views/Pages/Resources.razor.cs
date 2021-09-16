@@ -1,41 +1,62 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AntDesign;
 using Microsoft.AspNetCore.Components;
-using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.Web.Virtualization;
-using Microsoft.JSInterop;
-using TimeTracking.UI.Blazor;
-using TimeTracking.UI.Blazor.Shared;
 using TimeTracking.Core.Models;
-using TimeTracking.UI.Blazor.Services.Resources;
+using TimeTracking.UI.Blazor.Views.Components.Resources;
 
 namespace TimeTracking.UI.Blazor.Views.Pages
 {
     public partial class Resources
     {
         [Inject]
-        public IResourceService resourceService { get; set;  }
-        public bool loading { get; set; } = false;
-        public List<Resource> ResourceRetrieved { get; set; } = new List<Resource>();
-
-        protected override async Task OnInitializedAsync()
+        public ModalService modalService { get; set; }
+        public ModalRef AddResourceModalRef { get; set; }
+        ResourcesTableComponent ResourcesTable;
+        public Resource SelectedResource {  get; set; } 
+        public async Task OpenAddResourceModalAsync()
         {
-            loading = true;
-            ResourceRetrieved = await resourceService.RetrieveResourcesAsync();
-            loading = false;
+            var template = new Resource();
+            var modalConfig = new ModalOptions();
+            modalConfig.Title = "Add Resource";
+            modalConfig.Mask = true;
+            modalConfig.MaskClosable = false;
+            modalConfig.Centered = true;
+            modalConfig.Footer = null;
+
+            modalConfig.OnCancel = async (e) => await AddResourceModalRef.CloseAsync();
+
+            modalConfig.AfterClose = async () =>
+            {
+                this.StateHasChanged();
+                await ResourcesTable.LoadResources();
+            };
+
+            AddResourceModalRef = await modalService
+                .CreateModalAsync<AddResourceFormComponent, Resource>
+                (modalConfig, template);
+
+            AddResourceModalRef.OnOpen = () =>
+            {
+                Console.WriteLine("ModalRef OnOpen");
+                return Task.CompletedTask;
+            };
+
+            AddResourceModalRef.OnOk = () =>
+            {
+                Console.WriteLine("ModalRef OnOk");
+                return Task.CompletedTask;
+            };
+
+            AddResourceModalRef.OnCancel = () =>
+            {
+                Console.WriteLine("ModalRef OnCancel");
+                return Task.CompletedTask;
+            };
+
+            AddResourceModalRef.OnClose = () =>
+            {
+                Console.WriteLine("ModalRef OnClose");
+                return Task.CompletedTask;
+            };
         }
-        public void Edit()
-        {
-
-        }
-
-
     }
 }

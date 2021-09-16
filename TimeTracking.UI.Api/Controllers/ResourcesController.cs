@@ -10,10 +10,7 @@ public class ResourcesController : ControllerBase
 {
     private readonly IResourceService resourceService;
 
-    public ResourcesController(IResourceService resourceService)
-    {
-        this.resourceService = resourceService;
-    }
+    public ResourcesController(IResourceService resourceService) => this.resourceService = resourceService;
 
     [HttpGet]
     public ActionResult<IQueryable<Resource>> GetAllResources()
