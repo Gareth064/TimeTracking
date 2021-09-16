@@ -23,7 +23,7 @@ namespace TimeTracking.Core.Services.TimeSheetHeaders
 
             //TODO: do validation that the selected resource is the one to delete
             if (maybeTimeSheetHeader is null)
-                throw new Exception($"Unable to find Activity Type with Id '{id}' to remove.");
+                throw new Exception($"Unable to find TimeSheet Header with Id '{id}' to remove.");
             if (maybeTimeSheetHeader.Id != id)
                 throw new Exception($"Returned TimeSheetHeader did not match '{id}'");
 
